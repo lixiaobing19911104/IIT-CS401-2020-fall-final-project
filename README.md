@@ -1,2 +1,1 @@
-# IIT-CS401-2020-fall-final-project
-IIT-CS401-2020-fall-final-project
+This repository is used for IIT CS401's final project.
