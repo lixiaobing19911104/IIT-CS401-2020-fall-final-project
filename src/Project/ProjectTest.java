@@ -55,16 +55,16 @@ public class ProjectTest {
         sortedStringList.find("Orange");
         //find BST unsort int
         bstintunsort.contains(12609785);
-        System.out.println(String.format("12609785%s数字列表里", bstintsort.contains(12609785) ? "在" : "不在"));
+        System.out.println(String.format("12609785 is %s integer list", bstintsort.contains(12609785) ? "in" : "not in"));
 
         //find BST sort int
         bstintsort.contains(12609785);
-        System.out.println(String.format("12609785%s数字列表里", bstintsort.contains(12609785) ? "在" : "不在"));
+        System.out.println(String.format("12609785 is %s integer list", bstintsort.contains(12609785) ? "in" : "not in"));
 
         //find BST unsort String
-        System.out.println(String.format("orange%s水果列表里", bstStringunsort.contains("Orange") ? "在" : "不在"));
+        System.out.println(String.format("orange is %s integer list", bstStringunsort.contains("Orange") ? "in" : "not in"));
         //find BST sort String
-        System.out.println(String.format("Watermelon%s水果列表里", bstStringunsort.contains("Watermelon") ? "在" : "不在"));
+        System.out.println(String.format("Watermelon is %s integer list", bstStringunsort.contains("Watermelon") ? "in" : "not in"));
 
     }
 
