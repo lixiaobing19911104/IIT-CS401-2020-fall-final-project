@@ -64,15 +64,16 @@ public class BinarySearchTree<T extends Comparable> {
         boolean result = true;
         if (node == null) {
             result = false;
+            System.out.print("The item " + c + "is not in the BST.");   
         } else {
             if (c.compareTo(node.getInfo()) < 0) {
                 result = search(c, node.getLeft());
             } else if (c.compareTo(node.getInfo()) > 0) {
                 result = search(c, node.getRight());
             } else {
-                return true;
             }
         }
+        
         return result;
 
         /* 1. End of your code */
