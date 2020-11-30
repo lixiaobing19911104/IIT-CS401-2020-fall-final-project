@@ -32,7 +32,7 @@ public class SearchHelper {
 //		Ensure you find the worst case scenario for this method before coming to a conclusion 
         int index = -1;
         int low   = 0;
-        int high  = sortedArray.length;
+        int high  = sortedArray.length - 1;
         int Step  = 0;
 
         while (low <= high) {
@@ -48,7 +48,7 @@ public class SearchHelper {
                 break;
             }
             if (low > high) {
-                System.out.println("In the sorted array, the item " + value + " is not found.");
+                System.out.println("In the sorted array, the item " + value + " is not found.It takes " + Step + "th step.");
             }
 
 
