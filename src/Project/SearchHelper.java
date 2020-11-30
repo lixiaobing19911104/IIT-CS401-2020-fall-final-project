@@ -30,7 +30,6 @@ public class SearchHelper {
 //		This method takes only sorted array as input with a search element
 //		for example, your array cannot be {4,2,3,1}, it has to be sorted in ascending order {1,2,3,4}
 //		Ensure you find the worst case scenario for this method before coming to a conclusion 
-        int index = -1;
         int low   = 0;
         int high  = sortedArray.length - 1;
         int Step  = 0;
@@ -43,7 +42,6 @@ public class SearchHelper {
             } else if (sortedArray[mid].compareTo(value) > 0) {
                 high = mid - 1;
             } else {
-                index = mid;
                 System.out.println("In the sorted array, the item is found: " + value + " at " + Step + "th step.");
                 break;
             }

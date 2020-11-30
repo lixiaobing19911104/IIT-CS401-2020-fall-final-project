@@ -26,7 +26,6 @@ public class ProjectTest {
         System.out.print("Please input the type of data you want, int or String: ");
         Scanner data = new Scanner(System.in);
         type1 = data.next();
-        boolean a;
 
 
         System.out.println("Please input the type of database you want for search, Array, Linklist or BinarySearchTree:");
