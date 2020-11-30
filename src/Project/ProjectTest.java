@@ -80,12 +80,12 @@ public class ProjectTest {
                     BinarySearchTree<Integer> bstintunsort = new BinarySearchTree(unsortedList);
                     //find BST unsort int
                     System.out.println(String.format("The item is %s integer list", bstintunsort.contains(number1) ? "in" : "not in"));
-//                    System.out.print(bstintunsort.searchcount(number1));
+                    System.out.print(bstintunsort.searchcount(number1));
                 } else if (type3.equals("sorted")) {
                     BinarySearchTree<Integer> bstintsort = new BinarySearchTree(sortedList);
                     //find BST sort int
                     System.out.println(String.format("The item is %s integer list", bstintsort.contains(number1) ? "in" : "not in"));
-//                    System.out.print(bstintsort.searchcount(number1));
+                    System.out.print(bstintsort.searchcount(number1));
                 }
             }
 
@@ -131,12 +131,12 @@ public class ProjectTest {
                     BinarySearchTree<String> bstStringunsort = new BinarySearchTree(unsortedFruits);
                     //find BST unsort String
                     System.out.println(String.format("The item is %s String list", bstStringunsort.contains(fruitname1) ? "in" : "not in"));
-//                        System.out.print(bstStringunsort.searchcount(fruitname1));
+                        System.out.print(bstStringunsort.searchcount(fruitname1));
                 } else if (type3.equals("sorted")) {
                     BinarySearchTree<String> bstStringsort = new BinarySearchTree(unsortedFruits);
                     //find BST sort String
                     System.out.println(String.format("The item is %s String list", bstStringsort.contains(fruitname1) ? "in" : "not in"));
-//                        System.out.print(bstStringsort.searchcount(fruitname1));
+                        System.out.print(bstStringsort.searchcount(fruitname1));
                 }
             }
         } else {
