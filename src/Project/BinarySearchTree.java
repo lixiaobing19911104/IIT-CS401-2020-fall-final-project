@@ -64,8 +64,8 @@ public class BinarySearchTree<T extends Comparable> {
         boolean result = true;
         if (node == null) {
             result = false;
-            System.out.print("The item " + c + "is not in the BST.");   
-        } else {
+           } 
+        else {
             if (c.compareTo(node.getInfo()) < 0) {
                 result = search(c, node.getLeft());
             } else if (c.compareTo(node.getInfo()) > 0) {
@@ -228,6 +228,28 @@ public class BinarySearchTree<T extends Comparable> {
         }
         /* 6. End of your code */
     }
+    
+    public int searchcount(T c) {
+    	return this.searchsteps(c,root);
+    }
+    
+    public int searchsteps(T c, BSTNode node) {
+        /* 1. Fill your code here */
+        int count=1;
+        boolean found=false;
+        if (node == null) {   System.out.println (" And the total count times are ");         
+        } else {
+            if (c.compareTo(node.getInfo()) < 0) {
+                count=count+searchsteps(c, node.getLeft());
+            } else if (c.compareTo(node.getInfo()) > 0) {
+                count=count+searchsteps(c, node.getRight());
+            } else {found=true;
+            	System.out.println (" And the count times are ");
+            }
+        }  
+    return count;
+        /* 1. End of your code */
+    }
 
     /**
      * Returns the maximum depth of this BST.
@@ -255,5 +277,5 @@ public class BinarySearchTree<T extends Comparable> {
         return Integer.max(recMaxDepth(node.getLeft()), recMaxDepth(node.getRight())) + 1;
         /* 7. End of your code */
     }
-}
+} 
 

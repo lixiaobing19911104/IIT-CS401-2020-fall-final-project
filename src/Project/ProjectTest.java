@@ -7,65 +7,141 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 public class ProjectTest {
-    private final static int    SIZE                   = 4000;
+    private final static int    SIZE                   = 2000;
     private final static String FRUIT_FILE_PATH_FORMAT = "src%sProject%sfruit.txt";
+
 
     public static void main(String[] args) throws Exception {
         //Create these inputs
-        final Integer[] unsortedList = createRandomIntegerList();
+        String type1;
+        String type2;
+        String type3;
+        int    number1;
+        String fruitname1;
 
-        final Integer[] sortedList = sortList(unsortedList);
 
-        final String[] unsortedFruits = createUnsortedFruitListFromFile();
+        System.out.print("Please input the type of data you want, int or String: ");
+        Scanner data = new Scanner(System.in);
+        type1 = data.next();
+        boolean a;
 
-        final String[] sortedFruits = sortFruits(unsortedFruits);
 
-        // Create the int and String linklist from the Array
-        GeneralLinkedList<Integer> unsortedIntegerList = GeneralLinkedList.fromArray(unsortedList);
-        System.out.println("The top element of unsorted random list is " + unsortedIntegerList.top());
+        System.out.println("Please input the type of database you want for search, Array, Linklist or BinarySearchTree:");
+        Scanner database = new Scanner(System.in);
+        type2 = database.next();
 
-        GeneralLinkedList<Integer> sortedIntegerList = GeneralLinkedList.fromArray(sortedList);
-        System.out.println("The top element of sorted list is " + sortedIntegerList.top());
 
-        GeneralLinkedList<String> unsortedStringList = GeneralLinkedList.fromArray(unsortedFruits);
-        System.out.println("The top element of unsorted random fruits is " + unsortedStringList.top());
+        System.out.println("Please input whether you like sorted data or not, sorted or unsorted: ");
+        Scanner sort = new Scanner(System.in);
+        type3 = sort.next();
 
-        GeneralLinkedList<String> sortedStringList = GeneralLinkedList.fromArray(sortedFruits);
-        System.out.println("The top element of sorted fruits is " + sortedStringList.top());
 
-        // BinarySearchTree
-        BinarySearchTree<Integer> bstintunsort = new BinarySearchTree(unsortedList);
+        //Choose int 
+        if (type1.equals("int")) {
+            // Create the Random int Array
+            final Integer[] unsortedList = createRandomIntegerList();
+            final Integer[] sortedList   = sortList(unsortedList);
+            System.out.println("Please enter a random number: ");
+            Scanner number = new Scanner(System.in);
+            number1 = number.nextInt();
+            //Choose int and Array;
+            if (type2.equals("Array")) {
+                if (type3.equals("unsorted")) {
+                    //find intArrayunsort
+                    SearchHelper.exhaustiveSearch(unsortedList, number1);
+                } else if (type3.equals("sorted")) {
+                    //find intArraysort
+                    SearchHelper.binarySearch(sortedList, number1);
+                }
+            }
 
-        BinarySearchTree<Integer> bstintsort      = new BinarySearchTree(sortedList);
-        BinarySearchTree<String>  bstStringunsort = new BinarySearchTree(unsortedFruits);
-        BinarySearchTree<String>  bstStringsort   = new BinarySearchTree(unsortedFruits);
-        //find Arrayunsort
-        SearchHelper.exhaustiveSearch(unsortedList, 16578964);
-        //find Arraysort
-        SearchHelper.binarySearch(sortedList, 16578964);
-        //find intlistunsort
-        unsortedIntegerList.find(16579864);
-        //find intlistsort
-        sortedIntegerList.find(16579864);
-        //find Listunsort
-        unsortedStringList.find("Watermelon");
-        //find Listsort
-        sortedStringList.find("Orange");
-        //find BST unsort int
-        bstintunsort.contains(12609785);
-        System.out.println(String.format("12609785 is %s integer list", bstintsort.contains(12609785) ? "in" : "not in"));
 
-        //find BST sort int
-        bstintsort.contains(12609785);
-        System.out.println(String.format("12609785 is %s integer list", bstintsort.contains(12609785) ? "in" : "not in"));
+            // Choose int and Linklist
+            else if (type2.equals("Linklist")) {
+                if (type3.equals("unsorted")) {
+                    GeneralLinkedList<Integer> unsortedIntegerList = GeneralLinkedList.fromArray(unsortedList);
+                    System.out.println("The top element of unsorted random list is " + unsortedIntegerList.top());
+                    //find intlistunsort
+                    unsortedIntegerList.find(number1);
+                } else if (type3.equals("sorted")) {
+                    GeneralLinkedList<Integer> sortedIntegerList = GeneralLinkedList.fromArray(sortedList);
+                    System.out.println("The top element of sorted list is " + sortedIntegerList.top());
+                    //find intlistsort
+                    sortedIntegerList.find(number1);
+                }
+            }
 
-        //find BST unsort String
-        System.out.println(String.format("orange is %s integer list", bstStringunsort.contains("Orange") ? "in" : "not in"));
-        //find BST sort String
-        System.out.println(String.format("Watermelon is %s integer list", bstStringunsort.contains("Watermelon") ? "in" : "not in"));
+            // Choose int and BST
+            else if (type2.equals("BinarySearchTree")) {
+                if (type3.equals("unsorted")) {
+                    BinarySearchTree<Integer> bstintunsort = new BinarySearchTree(unsortedList);
+                    //find BST unsort int
+                    System.out.println(String.format("The item is %s integer list", bstintunsort.contains(number1) ? "in" : "not in"));
+//                    System.out.print(bstintunsort.searchcount(number1));
+                } else if (type3.equals("sorted")) {
+                    BinarySearchTree<Integer> bstintsort = new BinarySearchTree(sortedList);
+                    //find BST sort int
+                    System.out.println(String.format("The item is %s integer list", bstintsort.contains(number1) ? "in" : "not in"));
+//                    System.out.print(bstintsort.searchcount(number1));
+                }
+            }
 
+
+            //String database
+        }
+        if (type1.equals("String")) {
+            // Create the String Array
+            final String[] unsortedFruits = createUnsortedFruitListFromFile();
+            final String[] sortedFruits   = sortFruits(unsortedFruits);
+            System.out.println("Please enter a fruit name: ");
+            Scanner fruitname = new Scanner(System.in);
+            fruitname1 = fruitname.next();
+
+            //String and Array
+            if (type2.equals("Array")) {
+                if (type3.equals("unsorted")) {
+                    //find StringArrayunsort
+                    SearchHelper.exhaustiveSearch(unsortedFruits, fruitname1);
+                } else if (type3.equals("sorted")) {
+                    //find StringArayysort
+                    SearchHelper.binarySearch(sortedFruits, fruitname1);
+
+                }
+            }
+
+            //String and Linklist
+            else if (type2.equals("Linklist")) {
+                if (type3.equals("unsorted")) {
+                    GeneralLinkedList<String> unsortedStringList = GeneralLinkedList.fromArray(unsortedFruits);
+                    //find Listunsort
+                    unsortedStringList.find(fruitname1);
+                } else if (type3.equals("sorted")) {
+                    GeneralLinkedList<String> sortedStringList = GeneralLinkedList.fromArray(sortedFruits);
+                    //find Listsort
+                    sortedStringList.find(fruitname1);
+                }
+            }
+
+            //String and BST
+            else if (type2.equals("BinarySearchTree")) {
+                if (type3.equals("unsorted")) {
+                    BinarySearchTree<String> bstStringunsort = new BinarySearchTree(unsortedFruits);
+                    //find BST unsort String
+                    System.out.println(String.format("The item is %s String list", bstStringunsort.contains(fruitname1) ? "in" : "not in"));
+//                        System.out.print(bstStringunsort.searchcount(fruitname1));
+                } else if (type3.equals("sorted")) {
+                    BinarySearchTree<String> bstStringsort = new BinarySearchTree(unsortedFruits);
+                    //find BST sort String
+                    System.out.println(String.format("The item is %s String list", bstStringsort.contains(fruitname1) ? "in" : "not in"));
+//                        System.out.print(bstStringsort.searchcount(fruitname1));
+                }
+            }
+        } else {
+            System.out.print("Cannot find the things you want.");
+        }
     }
 
 
@@ -136,5 +212,6 @@ public class ProjectTest {
 
 
 }
+
 
 
