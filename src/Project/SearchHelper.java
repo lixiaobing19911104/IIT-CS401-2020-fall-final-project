@@ -11,14 +11,15 @@ public class SearchHelper {
         int n    = arr.length;
         int step = 0;
         for (int i = 0; i < n; i++) {
+        	 step++;
             boolean found = arr[i].equals(x);
             if (found == true) {
                 System.out.println("In the unsorted array, the item is found: " + x + " at " + step + "th step.");
                 break;
             } else if (found == false && i == n - 1) {
-                System.out.println("In the unsorted array, the item " + x + " is not found.");
+                System.out.println("In the unsorted array, the item " + x + " is not found.It takes " + step + "th step.");
             }
-            step++;
+           
 
         }
 
